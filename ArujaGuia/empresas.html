@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empresas - Aruja Guia</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        /* Customização para melhorar o layout de empresas */
+        .company-card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .company-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .company-logo {
+            max-width: 100px;
+            max-height: 100px;
+            margin-right: 20px;
+        }
+
+        .company-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .company-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        .search-bar {
+            padding: 20px 0;
+        }
+
+        .search-bar input {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+   <!-- Barra de Navegação -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Aruja Guia</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="empresas.html">Empresas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="buscar-vagas.html">Vagas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sobre.html">Sobre</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contato.html">Contato</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Mais
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="https://www.prefeituradearuja.sp.gov.br/" target="_blank">PREFEITURA</a>
+                        <a class="dropdown-item" href="https://www.arujatransporte.com.br/" target="_blank">TRANSPORTE</a>
+                        <a class="dropdown-item" href="https://servicosonline.prefeituradearuja.sp.gov.br/servicosonline/arujaemprega/" target="_blank">EMPREGOS</a>
+                    </div>
+                </li>
+                <!-- Link de Login e Logout -->
+                <li class="nav-item" id="loginNavItem">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+                <li class="nav-item" id="logoutNavItem" style="display: none;">
+                    <a class="nav-link" href="#" onclick="logout()">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+    // Verifica o estado de login do usuário
+    function checkLoginStatus() {
+        const usuarioLogado = localStorage.getItem('usuarioLogado');
+
+        if (usuarioLogado) {
+            // Se o usuário estiver logado, mostra o botão de logout
+            document.getElementById('loginNavItem').style.display = 'none';
+            document.getElementById('logoutNavItem').style.display = 'block';
+        } else {
+            // Se o usuário não estiver logado, mostra o botão de login
+            document.getElementById('loginNavItem').style.display = 'block';
+            document.getElementById('logoutNavItem').style.display = 'none';
+        }
+    }
+
+    // Função de logout
+    function logout() {
+        localStorage.removeItem('usuarioLogado'); // Remove a informação de login
+        alert('Logout realizado com sucesso!');
+        window.location.href = 'index.html'; // Redireciona para a página inicial
+    }
+
+    // Verifica o status de login ao carregar a página
+    checkLoginStatus();
+</script>
+
+
+    <!-- Barra de Pesquisa -->
+    <div class="bg-light search-bar">
+        <div class="container">
+            <form class="form-inline justify-content-center" onsubmit="return filterCompanies(event)">
+                <input type="text" class="form-control w-25" id="searchName" placeholder="Buscar Empresa">
+                <input type="text" class="form-control w-25" id="searchLocation" placeholder="Localização">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lista de Empresas -->
+    <div class="container my-5" id="companyList">
+        <h2 class="text-center mb-4">Empresas Populares</h2>
+        <!-- Cartões de Empresas serão gerados aqui -->
+    </div>
+
+    <footer class="bg-light">
+        <div class="container">
+            <p>© 2024 Aruja Guia. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Lista de empresas como exemplo
+        const companies = [
+            {
+                name: "Poliprint Embalagens",
+                location: "Arujá, SP",
+                description: "A Poliprint possui grande variedade de produtos em Polietileno de alta e baixa densidade, BOPP, poliester, laminados e metalizados.",
+                logo: "./src/logo_poliprint.png"
+            },
+            {
+                name: "Contato Visual",
+                location: "Arujá, SP",
+                description: "Indústria Metalúrgica com Know-how em Mobiliários Urbanos e Mobiliários Corporativos.",
+                logo: "./src/logo-contato.jpg"
+            },
+            {
+                name: "R.G.R Conexões",
+                location: "Arujá, SP",
+                description: "A RGR Pneumáticos é fabricante de conexões, tubos, flexíveis de freio, eletroválvulas, válvulas e atuadores para o segmento automotivo pesado e industriais, investindo constantemente em recursos fabris e humanos.",
+                logo: "./src/LOGO-RGR-Pneumatico.png"
+            },
+            {
+                name: "Itaquá Resistências Elétricas ",
+                location: "Itaquaquecetuba, SP",
+                description: "Empresa Fabricante de Resistências Elétricas Industriais.",
+                logo: "./src/logo-itq-resistencia.jpg"
+            },
+            {
+                name: "Rayflex  Portas Rápidas ",
+                location: "Mogi das Cruzes, SP",
+                description: "Empresa Fabricante de Resistências Elétricas Industriais.",
+                logo: "./src/logo-rayflex.png"
+            }
+            // Adicione mais empresas conforme necessário
+        ];
+
+        // Função para gerar os cartões de empresas
+        function displayCompanies(companiesToDisplay) {
+            const companyList = document.getElementById('companyList');
+            companyList.innerHTML = ''; // Limpa a lista atual
+
+            companiesToDisplay.forEach(company => {
+                const companyCard = document.createElement('div');
+                companyCard.classList.add('company-card');
+                companyCard.innerHTML = `
+                    <div class="company-info">
+                        <img src="${company.logo}" alt="Logo ${company.name}" class="company-logo">
+                        <div>
+                            <p class="company-name">${company.name}</p>
+                            <p>Localização: ${company.location}</p>
+                            <p>Descrição: ${company.description}</p>
+                            <a href="buscar-vagas.html" class="btn btn-outline-primary" onclick="setCompany('${company.name}')">Ver vagas</a>
+                        </div>
+                    </div>
+                `;
+                companyList.appendChild(companyCard);
+            });
+        }
+
+        // Função para filtrar empresas
+        function filterCompanies(event) {
+            event.preventDefault(); // Impede o envio do formulário
+
+            const name = document.getElementById('searchName').value.toLowerCase();
+            const location = document.getElementById('searchLocation').value.toLowerCase();
+
+            const filteredCompanies = companies.filter(company => {
+                const nameMatch = company.name.toLowerCase().includes(name);
+                const locationMatch = company.location.toLowerCase().includes(location);
+                return nameMatch && locationMatch;
+            });
+
+            displayCompanies(filteredCompanies);
+        }
+
+        // Armazena o nome da empresa no localStorage
+        function setCompany(companyName) {
+            localStorage.setItem('selectedCompany', companyName);
+        }
+
+        // Exibe todas as empresas ao carregar a página
+        displayCompanies(companies);
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

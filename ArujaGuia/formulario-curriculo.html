@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Currículo - Aruja Guia</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+
+<body>
+   <!-- Barra de Navegação -->
+   <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Aruja Guia</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="empresas.html">Empresas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="buscar-vagas.html">Vagas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobre.html">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contato.html">Contato</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Mais
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="https://www.prefeituradearuja.sp.gov.br/" target="_blank">PREFEITURA</a>
+                            <a class="dropdown-item" href="https://www.arujatransporte.com.br/" target="_blank">TRANSPORTE</a>
+                            <a class="dropdown-item" href="https://servicosonline.prefeituradearuja.sp.gov.br/servicosonline/arujaemprega/" target="_blank">EMPREGOS</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+    <!-- Formulário de Currículo -->
+    <div class="container my-5">
+        <h2>Faça seu Currículo Agora</h2>
+        <form id="curriculoForm">
+            <!-- Dados Pessoais -->
+            <h4>Dados Pessoais</h4>
+            <div class="form-group">
+                <label for="nome">Nome Completo</label>
+                <input type="text" class="form-control" id="nome" placeholder="Seu nome completo" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" id="email" placeholder="Seu e-mail" required>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="tel" class="form-control" id="telefone" placeholder="Seu telefone" required>
+            </div>
+
+            <!-- Objetivo Profissional -->
+            <h4>Objetivo Profissional</h4>
+            <div class="form-group">
+                <label for="objetivo">Objetivo</label>
+                <textarea class="form-control" id="objetivo" rows="2" placeholder="Seu objetivo profissional" required></textarea>
+            </div>
+
+            <!-- Resumo das Qualificações -->
+            <h4>Resumo das Qualificações</h4>
+            <div class="form-group">
+                <label for="qualificacoes">Resumo</label>
+                <textarea class="form-control" id="qualificacoes" rows="3" placeholder="Resumo das suas qualificações" required></textarea>
+            </div>
+
+            <!-- Experiência Profissional -->
+            <h4>Experiência Profissional</h4>
+            <div class="form-group">
+                <label for="experiencia">Experiência</label>
+                <textarea class="form-control" id="experiencia" rows="4" placeholder="Descreva sua experiência profissional" required></textarea>
+            </div>
+
+            <!-- Principais Realizações -->
+            <h4>Principais Realizações</h4>
+            <div class="form-group">
+                <label for="realizacoes">Realizações</label>
+                <textarea class="form-control" id="realizacoes" rows="3" placeholder="Principais realizações profissionais"></textarea>
+            </div>
+
+            <!-- Formação Acadêmica -->
+            <h4>Formação Acadêmica</h4>
+            <div class="form-group">
+                <label for="formacao">Formação</label>
+                <textarea class="form-control" id="formacao" rows="3" placeholder="Descreva sua formação acadêmica" required></textarea>
+            </div>
+
+            <!-- Cursos Complementares e Idiomas -->
+            <h4>Cursos Complementares e Idiomas</h4>
+            <div class="form-group">
+                <label for="cursos">Cursos e Idiomas</label>
+                <textarea class="form-control" id="cursos" rows="3" placeholder="Informe seus cursos complementares e idiomas" required></textarea>
+            </div>
+
+            <!-- Botão para Gerar Currículo -->
+            <button type="button" class="btn btn-primary" id="gerarPDF">Gerar Currículo em PDF</button>
+        </form>
+    </div>
+
+    <!-- Modal de Confirmação -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalLabel">Currículo Gerado</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Seu currículo foi gerado com sucesso! Você será redirecionado para a página de busca de vagas.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script para Gerar PDF e Mostrar Pop-up -->
+    <script>
+        document.getElementById('gerarPDF').addEventListener('click', function () {
+            var doc = new jsPDF();
+            
+            doc.setFontSize(22);
+            doc.text(20, 20, 'Currículo');
+
+            // Coletando os valores do formulário
+            var nome = document.getElementById('nome').value;
+            var email = document.getElementById('email').value;
+            var telefone = document.getElementById('telefone').value;
+            var objetivo = document.getElementById('objetivo').value;
+            var qualificacoes = document.getElementById('qualificacoes').value;
+            var experiencia = document.getElementById('experiencia').value;
+            var realizacoes = document.getElementById('realizacoes').value;
+            var formacao = document.getElementById('formacao').value;
+            var cursos = document.getElementById('cursos').value;
+
+            // Adicionando os valores ao PDF
+            doc.setFontSize(16);
+            doc.text(20, 30, 'Dados Pessoais:');
+            doc.setFontSize(12);
+            doc.text(20, 40, 'Nome: ' + nome);
+            doc.text(20, 50, 'Email: ' + email);
+            doc.text(20, 60, 'Telefone: ' + telefone);
+
+            doc.setFontSize(16);
+            doc.text(20, 70, 'Objetivo Profissional:');
+            doc.setFontSize(12);
+            doc.text(20, 80, objetivo);
+
+            doc.setFontSize(16);
+            doc.text(20, 90, 'Resumo das Qualificações:');
+            doc.setFontSize(12);
+            doc.text(20, 100, qualificacoes);
+
+            doc.setFontSize(16);
+            doc.text(20, 110, 'Experiência Profissional:');
+            doc.setFontSize(12);
+            doc.text(20, 120, experiencia);
+
+            doc.setFontSize(16);
+            doc.text(20, 130, 'Principais Realizações:');
+            doc.setFontSize(12);
+            doc.text(20, 140, realizacoes);
+
+            doc.setFontSize(16);
+            doc.text(20, 150, 'Formação Acadêmica:');
+            doc.setFontSize(12);
+            doc.text(20, 160, formacao);
+
+            doc.setFontSize(16);
+            doc.text(20, 170, 'Cursos Complementares e Idiomas:');
+            doc.setFontSize(12);
+            doc.text(20, 180, cursos);
+
+            // Gerar o PDF
+            doc.save('curriculo_' + nome + '.pdf');
+
+            // Mostrar o modal de confirmação
+            $('#confirmationModal').modal('show');
+
+            // Redirecionar após 3 segundos
+            setTimeout(function() {
+                window.location.href = 'buscar-vagas.html';
+            }, 3000);
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
