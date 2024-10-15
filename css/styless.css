@@ -1,0 +1,114 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.search-bar {
+  margin-top: 20px;
+}
+
+.search-bar input[type="text"] {
+  width: 40%;
+  margin-right: 10px;
+}
+
+.search-bar button[type="button"] {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.carousel-item {
+  padding: 20px;
+}
+
+.carousel-item h4 {
+  margin-top: 0;
+}
+
+.carousel-item span {
+  font-size: 14px;
+  color: #666;
+}
+
+.faq-item {
+  margin-bottom: 20px;
+}
+
+.faq-item h4 {
+  margin-top: 0;
+}
+
+.contact-info {
+  margin-top: 20px;
+}
+
+.contact-info p {
+  margin-bottom: 10px;
+}
+.postagens {
+  margin-top: 50px;
+}
+
+.card {
+  border: 1px solid #ccc;
+}
+
+.card-title {
+  font-size: 1.5rem;
+}
+
+.card-text {
+  font-size: 1rem;
+}
+
+.btn-danger {
+  margin-top: 10px;
+}
+.carousel-item h4 {
+  font-size: 1.5rem;
+}
+
+.carousel-item p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.carousel-item span {
+  font-size: 0.8rem;
+  color: #888;
+}
+.modal-header,
+.modal-footer {
+    border: none;
+}
+
+.carousel-item img {
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.news-card {
+    transition: all 0.3s ease;
+}
+
+.news-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para o rodapé de contato */
+.contact-footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin-top: 40px;
+}

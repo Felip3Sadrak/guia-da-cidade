@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Barra de Navegação -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Aruja Guia</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="empresas.html">Empresas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="buscar-vagas.html">Vagas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sobre.html">Sobre</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contato.html">Contato</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Mais
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="https://www.prefeituradearuja.sp.gov.br/" target="_blank">PREFEITURA</a>
+                        <a class="dropdown-item" href="https://www.arujatransporte.com.br/" target="_blank">TRANSPORTE</a>
+                        <a class="dropdown-item" href="https://servicosonline.prefeituradearuja.sp.gov.br/servicosonline/arujaemprega/" target="_blank">EMPREGOS</a>
+                    </div>
+                </li>
+                <!-- Link de Login e Logout -->
+                <li class="nav-item" id="loginNavItem">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+                <li class="nav-item" id="logoutNavItem" style="display: none;">
+                    <a class="nav-link" href="#" onclick="logout()">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+    // Verifica o estado de login do usuário
+    function checkLoginStatus() {
+        const usuarioLogado = localStorage.getItem('usuarioLogado');
+
+        if (usuarioLogado) {
+            // Se o usuário estiver logado, mostra o botão de logout
+            document.getElementById('loginNavItem').style.display = 'none';
+            document.getElementById('logoutNavItem').style.display = 'block';
+        } else {
+            // Se o usuário não estiver logado, mostra o botão de login
+            document.getElementById('loginNavItem').style.display = 'block';
+            document.getElementById('logoutNavItem').style.display = 'none';
+        }
+    }
+
+    // Função de logout
+    function logout() {
+        localStorage.removeItem('usuarioLogado'); // Remove a informação de login
+        alert('Logout realizado com sucesso!');
+        window.location.href = 'index.html'; // Redireciona para a página inicial
+    }
+
+    // Verifica o status de login ao carregar a página
+    checkLoginStatus();
+</script> 
+    <div class="container my-5">
+        <h1>Cadastro</h1>
+        <form id="formCadastro">
+            <div class="form-group">
+                <label for="nome">Nome Completo</label>
+                <input type="text" class="form-control" id="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" id="senha" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <a href="login.html" class="btn btn-secondary">Já tem uma conta? Login</a>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('formCadastro').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+
+            // Cria um objeto com os dados do usuário
+            const usuario = { nome, email, senha };
+
+            // Salva os dados no localStorage usando o email como chave
+            localStorage.setItem(email, JSON.stringify(usuario));
+
+            alert('Cadastro realizado com sucesso! Você pode agora fazer login.');
+            window.location.href = 'login.html'; // Redireciona para a página de login
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
