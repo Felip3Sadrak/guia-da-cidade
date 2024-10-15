@@ -9,34 +9,61 @@
 </head>
 
 <body>
-    <!-- Barra de Navegação -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">Aruja Guia</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="empresas.html">Empresas</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="buscar.html">Vagas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="sobre.html">Sobre</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contato.html">Contato</a>
-                    </li>
-                </ul>
-            </div>
+  <!-- Barra de Navegação -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Aruja Guia</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li> -->
+             
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.prefeituradearuja.sp.gov.br/">Prefeitura</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.arujatransporte.com.br/">Transporte</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./view/empresas.html">Empresas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://servicosonline.prefeituradearuja.sp.gov.br/servicosonline/arujaemprega/">Empregos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./view/buscar-vagas.html">Vagas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./view/sobre.html">Sobre</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./view/contato.html">Contato</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Associação
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="https://site.siteargus.com.br/579/institucional/579" target="_blank">APAE</a>
+                        <a class="dropdown-item" href="https://www.econodata.com.br/consulta-empresa/50430306000156-ASSOCIACAO-DOS-COMERCIANTES-E-EMPREENDEDORES-DE-ARUJA-ACEA" target="_blank">ACEA</a> 
+                       
+                    </div>
+                </li>
+                <!-- Link de Login e Logout -->
+                <li class="nav-item" id="loginNavItem">
+                    <a class="nav-link" href="./view/login.html">Login</a>
+                </li>
+                <li class="nav-item" id="logoutNavItem" style="display: none;">
+                    <a class="nav-link" href="#" onclick="logout()">Logout</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- Conteúdo da Página de Busca -->
     <div class="container my-5">
