@@ -313,11 +313,46 @@
     <!-- Rodapé de Contato -->
     <footer class="contact-footer">
         <div class="container text-center">
-            <p>Copyright Prefeitura de Arujá</p>
-            <p>Endereço: Rua José Basílio Alvarenga, 90 - Vila Flora Regina</p>
+            <p>Arujá Guia</p>
+            <p>Endereço: ..., ... - ...</p>
             <p>Contato: contato@arujaguia.com.br</p>
         </div>
     </footer>
+    <!-- Privacy Policy Pop-up -->
+<div id="privacyPolicyPopup" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="privacyPolicyTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="privacyPolicyTitle">Política de Privacidade</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Adicione o conteúdo da sua política de privacidade aqui -->
+          <p>Bem-vindo à Política de Privacidade do Aruja Guia. Esta política descreve como coletamos, usamos e protegemos suas informações pessoais.</p>
+          <h6>1. Informações que coletamos</h6>
+          <p>Coletamos informações que você nos fornece diretamente, como nome, e-mail e currículo ao se candidatar a vagas.</p>
+          <h6>2. Como usamos suas informações</h6>
+          <p>Usamos suas informações para conectar candidatos a oportunidades de emprego e melhorar nossos serviços.</p>
+          <h6>3. Compartilhamento de informações</h6>
+          <p>Compartilhamos suas informações apenas com as empresas às quais você se candidata.</p>
+          <h6>4. Seus direitos</h6>
+          <p>Você tem o direito de acessar, corrigir ou excluir suas informações pessoais a qualquer momento.</p>
+          <h6>5. Segurança</h6>
+          <p>Implementamos medidas de segurança para proteger suas informações contra acesso não autorizado ou alteração.</p>
+          <h6>6. Alterações nesta política</h6>
+          <p>Podemos atualizar esta política periodicamente. Recomendamos que você revise esta página regularmente.</p>
+          <h6>7. Contato</h6>
+          <p>Se você tiver dúvidas sobre esta política, entre em contato conosco em privacidade@arujaguia.com.br.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="rejectPolicy()">Rejeitar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="acceptPolicy()">Concordar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <!-- Scripts Necessários -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -353,7 +388,35 @@
                 .catch(error => console.error('Erro ao carregar vagas:', error));
         });
     </script>
+<script>
+    function openNews(title, imgSrc, content) {
+        // ...
+    }
 
+    // Função para carregar as vagas disponíveis
+    document.addEventListener("DOMContentLoaded", function () {
+        // ...
+    });
+
+     // Função para aceitar/rejeitar política de privacidade
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!localStorage.getItem('privacyPolicyAccepted')) {
+        $('#privacyPolicyPopup').modal({
+          backdrop: 'static',
+          keyboard: false
+        });
+      }
+    });
+
+    function acceptPolicy() {
+      localStorage.setItem('privacyPolicyAccepted', 'true');
+      $('#privacyPolicyPopup').modal('hide');
+    }
+
+    function rejectPolicy() {
+      $('#privacyPolicyPopup').modal('hide');
+    }
+</script>
 </body>
 
 </html>
