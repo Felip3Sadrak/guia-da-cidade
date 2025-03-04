@@ -1,34 +1,36 @@
-# Farma.Co
+# Guia da Cidade
 
-![Farma.Co Logo](./src/farma-co.svg)
+![Guia da Cidade Logo](./src/cidade.svg)
 
 ## Descrição do Projeto
 
-O **Farma.Co** é uma plataforma de delivery de medicamentos que oferece uma solução completa para gestão de pedidos e pagamentos seguros. Desenvolvido para dispositivos móveis, o projeto visa facilitar o acesso a medicamentos de forma rápida, segura e eficiente.
+O **Guia da Cidade** é uma plataforma web que centraliza notícias do município, oferece detalhes sobre setores industriais e comerciais, e proporciona acesso direto às secretarias municipais. Desenvolvido para ser uma ferramenta de informação e utilidade pública, o projeto visa facilitar o acesso a informações relevantes para os cidadãos.
 
 ## Tecnologias Utilizadas
 
-- **React Native**: Framework para desenvolvimento de aplicativos móveis multiplataforma.
-- **JavaScript**: Linguagem de programação utilizada para a lógica do aplicativo.
-- **Expo Go**: Ferramenta que facilita o desenvolvimento e teste de aplicativos React Native.
-- **Android**: Plataforma de destino para o aplicativo.
+- **PHP**: Linguagem de programação utilizada para o backend do sistema.
+- **JavaScript**: Linguagem de programação para interatividade e funcionalidades no frontend.
+- **Bootstrap**: Framework CSS para desenvolvimento de interfaces responsivas e modernas.
+- **SQL**: Banco de dados utilizado para armazenamento e gerenciamento de dados.
 
 ## Funcionalidades Principais
 
-- **Gestão de Pedidos**: Interface intuitiva para realizar e acompanhar pedidos de medicamentos.
-- **Pagamentos Seguros**: Integração com gateways de pagamento para transações seguras.
-- **Interface Responsiva**: Design adaptável para diferentes tamanhos de tela.
+- **Notícias do Município**: Área dedicada às últimas notícias e atualizações da cidade.
+- **Setores Industriais e Comerciais**: Informações detalhadas sobre os setores econômicos locais.
+- **Acesso às Secretarias Municipais**: Links e contatos diretos para as secretarias municipais.
+- **Interface Responsiva**: Design adaptável para diferentes dispositivos (desktop, tablet, mobile).
 
 ## Como Executar o Projeto
 
 ### Pré-requisitos
 
-- Node.js instalado
-- Expo CLI instalado globalmente (`npm install -g expo-cli`)
-- Dispositivo móvel com o aplicativo **Expo Go** instalado ou um emulador Android/iOS configurado.
+- Servidor web (ex: Apache, Nginx)
+- PHP instalado (versão 7.4 ou superior)
+- Banco de dados MySQL ou similar
+- Node.js (opcional, para instalação de dependências frontend)
 
 ### Passos para Execução
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/farma-co.git
+   git clone https://github.com/seu-usuario/guia-da-cidade.git
